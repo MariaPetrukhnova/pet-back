@@ -1,8 +1,19 @@
-const express = require('express');
-const app = express();
+const mongoose = require("mongoose");
+const app = require("./app");
 
-app.get("/api", (req, res) => {
-    res.json({"users": ["userOne", "userTwo", "userThree", "userFour"] })
-});
+require("dotenv").config();
 
-app.listen(5000, () => { console.log("Server started on port 5000") });
+mongoose.set("strictQuery", false);
+
+const { DB_HOST } = process.env;
+
+mongoose
+  .connect(DB_HOST)
+  .then(() => {
+    console.log("Database connection successful");
+    app.listen(5000);
+  })
+  .catch((error) => {
+    console.log(error.message);
+    process.exit(1);
+  });
