@@ -9,6 +9,9 @@ const register = async (req, res) => {
     console.log(req.body)
     const user = await User.findOne({ email });
 
+    console.log(await User.find())
+    res.sendStatus(200)
+
     if (user) {
         throw HttpError (409, "Email in use");
     }
