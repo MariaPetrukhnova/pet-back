@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const { User } = require("../../models/user");
-const { HttpError } = require("../../helpers");
+const { HttpError, sendEmail } = require("../../helpers");
 const gravatar = require("gravatar");
 
 const register = async (req, res) => {
@@ -22,8 +22,17 @@ const register = async (req, res) => {
     const newUser = await User.create({
         ...req.body,
         password: hashPassword,
-        avatarURL
+        avatarURL,
+        verifiedToken,
     });
+
+    const verifyEmail = {
+        to: email,
+        subject: "Verify email",
+        html: `<a target="_blanc" href="${BASE_URL}/api/users/verify/${verifiedToken}">Click to verify email</a>`
+    }
+
+    await sendEmail(verifyEmail);
 
     res.status(201).json({
         login: newUser.login,

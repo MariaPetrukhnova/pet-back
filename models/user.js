@@ -30,6 +30,7 @@ const userSchema = new Schema(
         },
         verifiedToken: {
             type: String,
+            required: [true, "Verified token is required"]
         },
         active: {
             type: Boolean,
@@ -37,12 +38,15 @@ const userSchema = new Schema(
         },
         avatarURL: {
             type: String,
+            default: "",
         },
         birthDate: {
             type: Date,
+            default: new Date(1990, 0, 1, 0, 0, 0, 0),
         },
         height: {
             type: mongoose.Types.Decimal128,
+            default: 170,
         },
         goal: {
             type: String,
@@ -57,92 +61,117 @@ const userSchema = new Schema(
         },
         startPhoto: {
             type: String,
+            default: "",
         },
         currentPhoto: [
             {
                 photoDate: {
                     type: Date,
+                    default: new Date(),
                 },
                 photoURL: {
                     type: String,
+                    default: "",
                 },
             }
         ],
         startWeight: {
             type: mongoose.Types.Decimal128,
+            default: 60,
         },
         goalWeight: {
             type: mongoose.Types.Decimal128,
+            default: 60,
         },
         currentWeight: [
             {
                 weightDate: {
                     type: Date,
+                    default: new Date(),
                 },
                 weightPhoto: {
                     type: String,
+                    default: "",
                 },
             }
         ],
         currentBMI: {
             type: mongoose.Types.Decimal128,
+            default: 20.8,
         },
         currentTDEE: {
            kcal: {
                 type: mongoose.Types.Decimal128,
+                default: 1400,
            },
            protein: {
                 type: mongoose.Types.Decimal128,
+                default: 70,
            },
            fat: {
                 type: mongoose.Types.Decimal128,
+                default: 46,
            },
            carbohydrates: {
                 type: mongoose.Types.Decimal128,
+                default: 175,
            },
            water: {
                 type: mongoose.Types.Decimal128,
+                default: 1500,
            },
         },
         startDimensions: {
             date: {
                 type: Date,
+                default: new Date(),
             },
             chest: {
                 type: mongoose.Types.Decimal128,
+                default: 90,
             },
             waist: {
                 type: mongoose.Types.Decimal128,
+                default: 60,
             },
             hip: {
                 type: mongoose.Types.Decimal128,
+                default: 90,
             },
             biceps: {
                 type: mongoose.Types.Decimal128,
+                default: 32,
             },
             thigh: {
                 type: mongoose.Types.Decimal128,
+                default: 52,
             },
         },
         currentDimensions: [
             {
                 date: {
                     type: Date,
+                    default: new Date(),
                 },
                 chest: {
                     type: mongoose.Types.Decimal128,
+                    default: 90,
                 },
                 waist: {
                     type: mongoose.Types.Decimal128,
+                    default: 60,
                 },
                 hip: {
                     type: mongoose.Types.Decimal128,
+                    default: 90,
                 },
                 biceps: {
                     type: mongoose.Types.Decimal128,
+                    default: 32,
                 },
                 thigh: {
                     type: mongoose.Types.Decimal128,
+                    default: 52,
                 },
             },
         ],
