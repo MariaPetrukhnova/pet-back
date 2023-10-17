@@ -1,7 +1,7 @@
 const { HttpError } = require("../../helpers");
 const { User } = require("../../models/user");
 const sendEmail = require("../../helpers");
-const nanoid = require("nanoid");
+const nanoid =require("nanoid");
 
 const {BASE_URL} = process.env;
 
