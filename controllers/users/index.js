@@ -6,7 +6,8 @@ const logout = require("./logout");
 const getCurrent = require("./getCurrent");
 const updateAvatar = require("./updateAvatar");
 const verifyEmail = require("./verifyEmail");
-const resendVerifyEmail = require("./resendVerifyEmail")
+const resendVerifyEmail = require("./resendVerifyEmail");
+const updateUserInfo = require("./updateUserInfo");
 
 module.exports = {
     register: ctrlWrapper(register),
@@ -16,4 +17,5 @@ module.exports = {
     updateAvatar: ctrlWrapper(updateAvatar),
     verifyEmail: ctrlWrapper(verifyEmail),
     resendVerifyEmail: ctrlWrapper(resendVerifyEmail),
+    updateUserInfo: ctrlWrapper(updateUserInfo),
 }
