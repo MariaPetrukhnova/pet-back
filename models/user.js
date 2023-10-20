@@ -89,9 +89,9 @@ const userSchema = new Schema(
                     type: Date,
                     default: new Date(),
                 },
-                weightPhoto: {
-                    type: String,
-                    default: "",
+                weight: {
+                    type: mongoose.Types.Decimal128,
+                    default: 60,
                 },
             }
         ],
@@ -186,7 +186,12 @@ userSchema.post("save", handleMongooseError);
 
 const userRegistrationSchema = Joi.object({
     login: Joi.string().required(),
-    email: Joi.string().pattern(emailRegexp).required(),
+    email: Joi.string().pattern(emailRegexp).required().messages({
+        "string.base": "The email must be a string.",
+        "any.required": "The email field is required.",
+        "string.empty": "The email must not be empty",
+        "string.pattern.base": "The email must be in format test@gmail.com.",
+      }),
     password: Joi.string().min(6).max(30).required(),
     goal: Joi.string().required(),
 });
@@ -200,11 +205,57 @@ const verifyEmailSchema = Joi.object({
     email: Joi.string().pattern(emailRegexp).required(),
 });
 
+const userCardSchema = Joi.object({
+    login: Joi.string(),
+    avatarURL: Joi.string(),
+    startPhoto: Joi.string(),
+    goal: Joi.string().valid(                
+        "To lose weight",
+        "To maintain weight",
+        "To gain weight",
+        "To cut my body",
+        "To bulk my body",
+        ),
+    birthDate: Joi.date(),
+    height: Joi.number(),
+    startWeight: Joi.number(),
+    goalWeight: Joi.number(),
+    startDimensions: Joi.object({
+        date: Joi.date(),
+        chest: Joi.number(),
+        waist: Joi.number(),
+        hip: Joi.number(),
+        biceps: Joi.number(),
+        thigh: Joi.number(),
+    }),
+});
+
+const userMeasurementsSchema = Joi.object({
+    currentPhoto: Joi.array().items(Joi.object({
+        photoDate: Joi.date(),
+        photoURL: Joi.string(),
+    })),
+    currentWeight: Joi.array().items(Joi.object({
+        weightDate: Joi.date(),
+        weight: Joi.number(),
+    })), 
+    currentDimensions: Joi.array().items(Joi.object({
+        weightDate: Joi.date(),
+        chest: Joi.number(),
+        waist: Joi.number(),
+        hip: Joi.number(),
+        biceps: Joi.number(),
+        thigh: Joi.number(),
+    })), 
+});
+
 
 const schemas = {
     userRegistrationSchema,
     userLoginSchema,
     verifyEmailSchema,
+    userCardSchema,
+    userMeasurementsSchema,
 };
 
 const User = model("user", userSchema);

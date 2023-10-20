@@ -8,6 +8,8 @@ const updateAvatar = require("./updateAvatar");
 const verifyEmail = require("./verifyEmail");
 const resendVerifyEmail = require("./resendVerifyEmail");
 const updateUserInfo = require("./updateUserInfo");
+const addBodyMeasurements = require("./addBodyMeasurements");
+const getUserInfo = require("./getUserInfo");
 
 module.exports = {
     register: ctrlWrapper(register),
@@ -18,4 +20,6 @@ module.exports = {
     verifyEmail: ctrlWrapper(verifyEmail),
     resendVerifyEmail: ctrlWrapper(resendVerifyEmail),
     updateUserInfo: ctrlWrapper(updateUserInfo),
+    addBodyMeasurements: ctrlWrapper(addBodyMeasurements),
+    getUserInfo: ctrlWrapper(getUserInfo),
 }

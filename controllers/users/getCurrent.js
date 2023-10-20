@@ -3,7 +3,7 @@ const getCurrent = async (req, res) => {
 
     res.json({
         login,
-        email
+        email, 
     });
 };
 
