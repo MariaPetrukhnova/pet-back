@@ -65,7 +65,7 @@ const userSchema = new Schema(
         },
         currentPhoto: [
             {
-                photoDate: {
+                date: {
                     type: Date,
                     default: new Date(),
                 },
@@ -85,7 +85,7 @@ const userSchema = new Schema(
         },
         currentWeight: [
             {
-                weightDate: {
+                date: {
                     type: Date,
                     default: new Date(),
                 },
@@ -232,15 +232,15 @@ const userCardSchema = Joi.object({
 
 const userMeasurementsSchema = Joi.object({
     currentPhoto: Joi.array().items(Joi.object({
-        photoDate: Joi.date(),
+        date: Joi.date(),
         photoURL: Joi.string(),
     })),
     currentWeight: Joi.array().items(Joi.object({
-        weightDate: Joi.date(),
+        date: Joi.date(),
         weight: Joi.number(),
     })), 
     currentDimensions: Joi.array().items(Joi.object({
-        weightDate: Joi.date(),
+        date: Joi.date(),
         chest: Joi.number(),
         waist: Joi.number(),
         hip: Joi.number(),

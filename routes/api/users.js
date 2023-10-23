@@ -24,6 +24,6 @@ router.get("/usercard/:id", authentificate, getUserInfo);
 
 router.patch("/usercard/:id", validateBody(schemas.userCardSchema), updateUserInfo);
 
-router.patch("/measurements/:id", validateBody(schemas.userMeasurementsSchema), addBodyMeasurements);
+router.patch("/measurements/:id", /*validateBody(schemas.userMeasurementsSchema),*/ addBodyMeasurements);
 
 module.exports = router;
