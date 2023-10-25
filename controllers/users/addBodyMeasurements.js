@@ -10,11 +10,11 @@ const addBodyMeasurements = async (req, res) => {
   const updateData = {}
 
   if (photoURL) {
-    updateData.$push = { currentPhoto: { photoURL: photoURL } }
+    updateData.$push = { currentPhoto: { photoURL } }
   }
 
   if (weight) {
-    updateData.$push = { currentWeight: { weight: weight } }
+    updateData.$push = { currentWeight: { weight } }
   }
 
   if (chest || waist || hip || biceps || thigh) {

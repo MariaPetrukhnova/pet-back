@@ -48,6 +48,18 @@ const userSchema = new Schema(
             type: mongoose.Types.Decimal128,
             default: 170,
         },
+        physycalActivity: {
+            type: String,
+            enum: [
+                "Limit activity",
+                "Light activity",
+                "Normal activity",
+                "Sporty lifestyle",
+                "I'm athlet",
+            ],
+            required: [false, "Set your level of physycal activity"],
+            default: "Limit activity"
+        },
         goal: {
             type: String,
             enum: [
@@ -172,7 +184,7 @@ const userSchema = new Schema(
                 thigh: {
                     type: mongoose.Types.Decimal128,
                     default: 52,
-                },
+                }
             },
         ],
         friends: {
@@ -231,22 +243,14 @@ const userCardSchema = Joi.object({
 });
 
 const userMeasurementsSchema = Joi.object({
-    currentPhoto: Joi.array().items(Joi.object({
-        date: Joi.date(),
-        photoURL: Joi.string(),
-    })),
-    currentWeight: Joi.array().items(Joi.object({
-        date: Joi.date(),
-        weight: Joi.number(),
-    })), 
-    currentDimensions: Joi.array().items(Joi.object({
-        date: Joi.date(),
-        chest: Joi.number(),
-        waist: Joi.number(),
-        hip: Joi.number(),
-        biceps: Joi.number(),
-        thigh: Joi.number(),
-    })), 
+    photoURL: Joi.string(),
+    weight: Joi.number(),
+    date: Joi.date(),
+    chest: Joi.number(),
+    waist: Joi.number(),
+    hip: Joi.number(),
+    biceps: Joi.number(),
+    thigh: Joi.number(),
 });
 
 

@@ -6,7 +6,7 @@ require("dotenv").config();
 
 
 const usersRouter = require("./routes/api/users");
-// const achievmentsRouter = require("./routes/api/achievments");
+const achievementsRouter = require("./routes/api/achievements");
 // const activitiesRouter = require("./routes/api/activities");
 // const advicesRouter = require("./routes/api/advices");
 // const mealsRouter = require("./routes/api/meals");
@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/api/users", usersRouter);
-// app.use("/api/achievments", achievmentsRouter);
+app.use("/api/achievements", achievementsRouter);
 // app.use("/api/activities", activitiesRouter);
 // app.use("/api/advices", advicesRouter);
 // app.use("/api/meals", mealsRouter)

@@ -20,6 +20,7 @@ const updateUserInfo = async (req, res) => {
         goal: result.goal,
         birthDate: result.birthDate,
         height: result.height,
+        physycalActivity: result.physycalActivity,
         startWeight: result.startWeight,
         goalWeight: result.goalWeight,
         startDimensions: result.startDimensions
