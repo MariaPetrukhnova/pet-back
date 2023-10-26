@@ -4,73 +4,76 @@ const { handleMongooseError } = require("../helpers");
 
 const achievementShema = new Schema(  
         {
-            checkpoints: {
-                date: {
-                    type: Date,
-                    default: new Date(),
-                },
-                timelySupper: {
-                    type: Boolean,
-                    default: false,
-                },
-                dailyKcal: {
-                    type: Boolean,
-                    default: false,
-                },
-                dailySteps: {
-                    type: Boolean,
-                    default: false,
-                },
-                dailyExercises: {
-                    type: Boolean,
-                    default: false,
-                },
-                healthySleep: {
-                    type: Boolean,
-                    default: false,
-                },
-                waterIntake: {
-                    type: Boolean,
-                    default: false,
-                },
-                activeTraining: {
-                    type: Boolean,
-                    default: false,
-                },
-                skinTreatment: {
-                    type: Boolean,
-                    default: false,
-                },
-                noSweets: {
-                    type: Boolean,
-                    default: false,
-                },
-                dailyPFC: {
-                    type: Boolean,
-                    default: false,
-                },
-                alcoDay: {
-                    type: Boolean,
-                    default: false,
-                },
-                cheetMeal: {
-                    type: Boolean,
-                    default: false,
-                },
-                hypodinamia: {
-                    type: Boolean,
-                    default: false,
-                },
-                nightMeal: {
-                    type: Boolean,
-                    default: false,
-                },
-            },
             owner: {
                 type: Schema.Types.ObjectId,
                 ref: "user",
                 required: true,
             },
+            checkpoints: 
+            [
+                {
+                    date: {
+                        type: Date,
+                        default: new Date(),
+                    },
+                    timelySupper: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    dailyKcal: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    dailySteps: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    dailyExercises: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    healthySleep: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    waterIntake: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    activeTraining: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    skinTreatment: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    noSweets: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    dailyPFC: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    alcoDay: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    cheetMeal: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    hypodinamia: {
+                        type: Boolean,
+                        default: false,
+                    },
+                    nightMeal: {
+                        type: Boolean,
+                        default: false,
+                    },
+                }
+            ]
         },
     { versionKey: false, timestamps: true }
 );
