@@ -2,6 +2,8 @@ const { Schema, model, default: mongoose } = require("mongoose");
 const Joi = require("joi");
 const { handleMongooseError } = require("../helpers");
 
+const currentDate = new Date();
+
 const achievementShema = new Schema(  
         {
             owner: {
@@ -14,7 +16,7 @@ const achievementShema = new Schema(
                 {
                     date: {
                         type: Date,
-                        default: new Date(),
+                        default: currentDate.toDateString(),
                     },
                     timelySupper: {
                         type: Boolean,

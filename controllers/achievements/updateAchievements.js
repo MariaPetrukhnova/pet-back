@@ -10,39 +10,25 @@ const updateAchievements = async (req, res) =>{
     const {owner} = req.params;
 
     const userAchievements = await Achievements.findOne({owner});
+    console.log(req.body.date);
 
-    const toBeUpdated = userAchievements.checkpoints.find(({ date }) => date.toLocaleDateString() === req.body.date.toLocaleDateString());
-    console.log(toBeUpdated);
-
-    const updatedAchievements = await userAchievements.updateOne(
-        {
-            "checkpoints": { "$elemMatch": { "date": req.body.date }}
-        },
-        {
-            "$set": { "chekpotnts": req.body }
-        }
+    try {
+        const updatedCheckpoints = await Achievements.findOneAndUpdate(
+            {owner},
+            { $set: { "checkpoints.$[elem]": req.body } },
+            { arrayFilters:[ { "elem.date": { $eq: req.body.date } } ]},
+            { returnNewDocument: true }
     );
+    
 
-    if (!userAchievements) {
-        return
-    }
+        res.status(200).json({
+            updatedCheckpoints
+        })
 
-    res.status(200).json({
-        timelySupper: updatedAchievements.timelySupper,
-        dailyKcal: updatedAchievements.dailyKcal,
-        dailySteps: updatedAchievements.dailySteps,
-        dailyExercises: updatedAchievements.dailyExercises,
-        healthySleep: updatedAchievements.healthySleep,
-        waterIntake: updatedAchievements.waterIntake,
-        activeTraining: updatedAchievements.activeTraining,
-        skinTreatment: updatedAchievements.skinTreatment,
-        noSweets: updatedAchievements.noSweets,
-        dailyPFC: updatedAchievements.dailyPFC,
-        alcoDay: updatedAchievements.alcoDay,
-        cheetMeal: updatedAchievements.cheetMeal,
-        hypodinamia: updatedAchievements.hypodinamia,
-        nightMeal: updatedAchievements.nightMeal,
-    })
+    } catch(err) {
+    console.log(err);
+    res.statusSend(500);
+}
 };
 
 
