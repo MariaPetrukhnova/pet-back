@@ -1,7 +1,7 @@
 const express = require("express");
 
 const { register, login, logout, updateAvatar, getCurrent, verifyEmail, resendVerifyEmail, addBodyMeasurements, updateUserInfo, getUserInfo } = require("../../controllers/users");
-const { validateBody, upload, authentificate } = require("../../middlewares");
+const { validateBody, upload, authentificate, isValidId } = require("../../middlewares");
 const { schemas } = require("../../models/user");
 
 const router = express.Router();
@@ -20,10 +20,10 @@ router.get("/current", authentificate, getCurrent);
 
 router.patch("/avatars", authentificate, upload.single("avatar"), updateAvatar);
 
-router.get("/usercard/:id", authentificate, getUserInfo);
+router.get("/usercard/:id", isValidId, authentificate, getUserInfo);
 
-router.patch("/usercard/:id", validateBody(schemas.userCardSchema), updateUserInfo);
+router.patch("/usercard/:id", isValidId, validateBody(schemas.userCardSchema), updateUserInfo);
 
-router.patch("/measurements/:id", validateBody(schemas.userMeasurementsSchema), addBodyMeasurements);
+router.patch("/measurements/:id", isValidId, validateBody(schemas.userMeasurementsSchema), addBodyMeasurements);
 
 module.exports = router;

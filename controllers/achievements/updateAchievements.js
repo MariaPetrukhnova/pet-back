@@ -1,5 +1,5 @@
 const {checkpointSchema, Achievements} = require("../../models/achievements");
-const {HttpError} = require("../../helpers")
+const {HttpError} = require("../../helpers");
 
 const updateAchievements = async (req, res) =>{
     const { error } = checkpointSchema.validate(req.body);
@@ -10,7 +10,7 @@ const updateAchievements = async (req, res) =>{
     const {owner} = req.params;
 
     const userAchievements = await Achievements.findOne({owner});
-    console.log(req.body.date);
+
 
     try {
         const updatedCheckpoints = await Achievements.findOneAndUpdate(
