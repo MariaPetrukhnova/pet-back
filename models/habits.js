@@ -2,6 +2,7 @@ const { Schema, model, default: mongoose } = require("mongoose");
 const Joi = require("joi");
 const { handleMongooseError } = require("../helpers");
 
+const currentDate = new Date();
 
 const habitsSchema = new Schema(
     {

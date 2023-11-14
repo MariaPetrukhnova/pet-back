@@ -5,7 +5,7 @@ const {HttpError} = require("../../helpers");
 const getHabits = async (req, res) => {
     const { owner } = req.params;
     const userHabits = await Habits.findOne({owner});
-    const currentDate = req.body.date;
+    // const currentDate = req.body.date;
 
     if(!userHabits) {
         throw HttpError (
@@ -13,11 +13,11 @@ const getHabits = async (req, res) => {
         )
     }
 
-    const userHabitsArr = await userHabits.habits;
-    const currentHabitsArr = userHabitsArr.find(({ date }) => date === currentDate);
+    const userHabitsArr = userHabits.habits;
+    // const currentHabitsArr = userHabitsArr.find(({ date }) => date === currentDate);
 
 
-    res.json(currentHabitsArr.toDoList);
+    res.json(userHabitsArr);
 };
 
 module.exports = getHabits;

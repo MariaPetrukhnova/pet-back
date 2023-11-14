@@ -8,10 +8,10 @@ require("dotenv").config();
 const usersRouter = require("./routes/api/users");
 const achievementsRouter = require("./routes/api/achievements");
 // const activitiesRouter = require("./routes/api/activities");
-// const advicesRouter = require("./routes/api/advices");
+const adviceRouter = require("./routes/api/advice");
 // const mealsRouter = require("./routes/api/meals");
 // const recipesRouter = require("./routes/api/recipes");
-// const exercisesRouter = require("./routes/api/exercises");
+const habitsRouter = require("./routes/api/habits");
 
 const app = express();
 
@@ -25,10 +25,10 @@ app.use(express.static("public"));
 app.use("/api/users", usersRouter);
 app.use("/api/achievements", achievementsRouter);
 // app.use("/api/activities", activitiesRouter);
-// app.use("/api/advices", advicesRouter);
+app.use("/api/advice", adviceRouter);
 // app.use("/api/meals", mealsRouter)
 // app.use("/api/recipes", recipesRouter);
-// app.use("/api/exercises", exercisesRouter);
+app.use("/api/habits", habitsRouter);
 
 
 app.use((req, res) => {

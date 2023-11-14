@@ -1,11 +1,47 @@
-{
-    "timelySupper": "You have 30 min to have a supper in time",
-    "dailyKcal": "You've reached your daily calorie limit",
-    "dailySteps": "Please try to make a little walk to reach daily steps goal",
-    "dailyExercises": "Don't forget to have some physycal activity today",
-    "healthySleep": "Adults should try to go to sleep between 10:00 and 11:00 p.m.",
-    "waterIntake": "Don't forget to drink enough water",
-    "activeTraining": "It's a time to have some active training",
-    "skinTreatment": "Everyday light massages reduce stress, promote relaxation, improve moods and improve your shape and skin ",
-    "nightMeal": "Try not to eat any meal today. You can brush your teeth to guarantee it:)"
+[
+    {
+        "time": "17:30",
+        "event": "timelySupper",
+        "message": "You have 30 min to have a supper in time"
+},
+    {
+        "time": "any",
+        "event":"dailyKcal",
+        "message": "You've reached your daily calorie limit"
+},
+    {
+        "time": "13:00",
+        "event":"dailySteps",
+        "message": "Please try to make a little walk to reach daily steps goal"
+},
+    {
+        "time": "16:00",
+        "event":"dailyExercises",
+        "message": "Don't forget to have some physycal activity today"
+},
+    {
+        "time": "22:00",
+        "event":"healthySleep",
+        "message": "Adults should try to go to sleep between 10:00 and 11:00 p.m."
+},
+    {
+        "time": "10:00",
+        "event":"waterIntake",
+        "message": "Don't forget to drink enough water"
+},
+    {
+        "time": "19:00",
+        "event":"activeTraining",
+        "message": "It's a time to have some active training"
+},
+    {
+        "time": "21:00",
+        "event":"skinTreatment",
+        "message": "Everyday light massages reduce stress, promote relaxation, improve moods and improve your shape and skin "
+},
+    {
+        "time": "20:00",
+        "event":"nightMeal",
+        "message": "Try not to eat any meal today. You can brush your teeth to guarantee it:)"
 }
+]

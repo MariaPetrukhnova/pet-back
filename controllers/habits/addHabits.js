@@ -11,12 +11,17 @@ const addHabits = async (req, res) => {
 
     const { owner } = req.params;
     let toDos = {};
+    const currentDate = new Date().toDateString();
 
     const userHabits = await Habits.findOne({owner});
 
     const updateData = {};
+    // const newToDos = {};
 
-    updateData.$push = {habits: req.body};
+    // newToDos.$push = {toDoList: req.body};
+    // console.log(newToDos);
+    updateData.$push = {habits: {date: currentDate, toDoList: req.body}};
+    console.log(updateData)
 
     if (userHabits) {
         toDos = await Habits.findByIdAndUpdate(
@@ -28,7 +33,7 @@ const addHabits = async (req, res) => {
 
     if (!userHabits) {
         toDos = await Habits.create({
-            habits: req.body,
+            habits: updateData,
             owner: owner,
         });
     };
