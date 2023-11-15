@@ -1,6 +1,5 @@
 const fs = require("fs/promises");
 const path = require("path");
-const { nanoid } = require("nanoid");
 
 const advicePath = path.join(__dirname, "adviceDB.json");
 
@@ -12,8 +11,14 @@ const listAdvice = async () => {
 const getAdvice = async (req, res) => {
     const event = req.body;
     const advice = await listAdvice();
-    const result = advice.find(item => item.event === event);
-    return result || null;
+    const result = advice.find((item) => {
+        item.event === event.event;
+        if (item.event === event.event) {
+            return item;
+        }
+    });
+
+    res.json(result.message);
 }
 
 module.exports = getAdvice;

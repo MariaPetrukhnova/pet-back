@@ -4,6 +4,18 @@ const { handleMongooseError } = require("../helpers");
 
 const currentDate = new Date();
 
+const TodosSchema = new Schema({
+    title: {
+        type: String,
+    },
+    text: {
+        type: String,
+    },
+    done: {
+        type: Boolean,
+    }
+})
+
 const habitsSchema = new Schema(
     {
         owner: {
@@ -17,19 +29,7 @@ const habitsSchema = new Schema(
                     type: Date,
                     default: currentDate.toDateString(),
                 },
-                toDoList: [
-                    {
-                        title: {
-                            type: String,
-                        },
-                        text: {
-                            type: String,
-                        },
-                        done: {
-                            type: Boolean,
-                        }
-                    }
-                ]
+                toDoList: [TodosSchema]
             }
         ]
     },
@@ -38,7 +38,7 @@ const habitsSchema = new Schema(
 
 habitsSchema.post("save", handleMongooseError);
 
-const toDoListSchema = Joi.object({
+const toDoListSchema = Joi.array().items({
     title: Joi.string(),
     text: Joi.string(),
     done: Joi.boolean(),

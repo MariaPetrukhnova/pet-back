@@ -16,8 +16,7 @@ const updateAchievements = async (req, res) =>{
         const updatedCheckpoints = await Achievements.findOneAndUpdate(
             {owner},
             { $set: { "checkpoints.$[elem]": req.body } },
-            { arrayFilters:[ { "elem.date": { $eq: req.body.date } } ]},
-            { returnNewDocument: true }
+            { arrayFilters:[ { "elem.date": { $eq: req.body.date } } ], returnDocument: 'after' },
     );
     
 
